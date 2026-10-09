@@ -1,0 +1,13 @@
+package com.krishiconnect.entity;
+
+public enum Skill {
+    TRACTOR_DRIVER,
+    HARVESTER_OPERATOR,
+    SPRAY_OPERATOR,
+    DRONE_PILOT,
+    IRRIGATION_TECHNICIAN,
+    FARM_MECHANIC,
+    COCONUT_CLIMBER,
+    PRUNING_EXPERT,
+    FARM_LABOUR
+}
