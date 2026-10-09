@@ -1,0 +1,84 @@
+spring:
+  application:
+    name: krishiconnect
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/krishiconnect}
+    username: ${DB_USERNAME:krishi}
+    password: ${DB_PASSWORD:krishi}
+    hikari:
+      maximum-pool-size: ${DB_POOL_SIZE:10}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+        # loads lazy associations of a page of bookings in a few IN queries instead of one per row
+        default_batch_fetch_size: 50
+  flyway:
+    enabled: true
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+  servlet:
+    multipart:
+      max-file-size: 3MB
+      max-request-size: 10MB
+
+server:
+  port: ${PORT:8080}
+  shutdown: graceful
+  error:
+    include-message: never
+  compression:
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: never
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method
+    tags-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+
+app:
+  timezone: ${APP_TIMEZONE:Asia/Kolkata}
+  jwt:
+    # Must be at least 32 characters. Always override in production.
+    secret: ${JWT_SECRET:change-me-local-dev-secret-key-0123456789}
+    expiry-minutes: ${JWT_EXPIRY_MINUTES:1440}
+  cors:
+    allowed-origins: ${CORS_ORIGINS:http://localhost:5173}
+  admin:
+    email: ${ADMIN_EMAIL:}
+    password: ${ADMIN_PASSWORD:}
+  booking:
+    # a provider has this long to accept a booking request before it is released
+    pending-minutes: ${BOOKING_PENDING_MINUTES:120}
+    max-days: 14
+    expiry-check-ms: ${EXPIRY_CHECK_MS:30000}
+  routing:
+    enabled: ${ROUTING_ENABLED:true}
+    # public OSRM demo server, no key needed. Point this to your own OSRM for real traffic.
+    base-url: ${ROUTING_BASE_URL:https://router.project-osrm.org}
+    timeout-ms: ${ROUTING_TIMEOUT_MS:2500}
+    # only the nearest N results (by straight line) are sent to the routing API
+    max-destinations: ${ROUTING_MAX_DESTINATIONS:25}
+    # after a failure, skip the API for this long and use straight-line distance
+    cooldown-seconds: ${ROUTING_COOLDOWN_SECONDS:60}
+    cache-hours: 24
+  seed:
+    demo-data: ${SEED_DEMO_DATA:true}
+    # password for the seeded demo accounts (seeker, provider, specialist)
+    demo-password: ${DEMO_PASSWORD:demo1234}
