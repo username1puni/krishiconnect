@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import Navbar from './components/Navbar.jsx'
 import Login from './pages/Login.jsx'
 import Register from './pages/Register.jsx'
+import EquipmentList from './pages/EquipmentList.jsx'
 
 export default function App() {
   const { t } = useTranslation()
@@ -13,6 +14,7 @@ export default function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/equipment" element={<EquipmentList />} />
         </Routes>
       </main>
       <footer className="footer">
