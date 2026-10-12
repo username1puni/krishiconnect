@@ -115,7 +115,7 @@ free and both insert. KrishiConnect closes that gap in layers.
    `(equipment_id, start_at, end_at, status)`.
 4. **All or nothing.** If any item in a bundle is busy, the method throws before anything is written, and
    the whole transaction rolls back. The farmer gets `409 Conflict` with the names of the busy items.
-5. **A unique key as the last line of defence.** Every booked hour is written to `booking_slots`, which
+5. **A unique key as the last line of defence.** Every booked hour is written to `availability_slots`, which
    has `UNIQUE (resource_type, resource_id, slot_start)`. Even if a code path ever skipped the lock, MySQL
    itself would reject the second insert. That exception, and a lock timeout, are both mapped to `409`
    instead of a `500`.
@@ -166,7 +166,7 @@ Every index exists for a query the app actually runs. The main ones:
 | `equipment (latitude, longitude)`, same on `users`, `places`, `requirements` | "near me" bounding box scan |
 | `equipment (moderation_status, status, category, created_at)` | browse page without a location: approved, active, by category, newest first |
 | `booking_items (equipment_id, start_at, end_at, status)` and the same for `specialist_id` | the overlap check under the lock, and the availability calendar |
-| `booking_slots UNIQUE (resource_type, resource_id, slot_start)` | the database-level double booking guarantee |
+| `availability_slots UNIQUE (resource_type, resource_id, slot_start)` | the database-level double booking guarantee |
 | `bookings (status, expires_at)` | the expiry job: pending bookings past their deadline |
 | `bookings (seeker_id, created_at)` | "my bookings", newest first, paginated |
 | `booking_items (provider_id, status)` | a provider's incoming requests |
