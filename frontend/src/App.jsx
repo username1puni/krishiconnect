@@ -5,6 +5,7 @@ import ProtectedRoute from './components/ProtectedRoute.jsx'
 import Home from './pages/Home.jsx'
 import Login from './pages/Login.jsx'
 import Register from './pages/Register.jsx'
+import Profile from './pages/Profile.jsx'
 import EquipmentList from './pages/EquipmentList.jsx'
 import EquipmentDetail from './pages/EquipmentDetail.jsx'
 import Specialists from './pages/Specialists.jsx'
@@ -16,6 +17,7 @@ import MyBookings from './pages/MyBookings.jsx'
 import ProviderEquipment from './pages/ProviderEquipment.jsx'
 import EquipmentForm from './pages/EquipmentForm.jsx'
 import ProviderRequests from './pages/ProviderRequests.jsx'
+import Notifications from './pages/Notifications.jsx'
 import Seasonal from './pages/Seasonal.jsx'
 import NotFound from './pages/NotFound.jsx'
 
@@ -40,6 +42,8 @@ export default function App() {
             path="/requirements/new"
             element={<ProtectedRoute roles={['SEEKER']}><RequirementNew /></ProtectedRoute>}
           />
+          <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+          <Route path="/notifications" element={<ProtectedRoute><Notifications /></ProtectedRoute>} />
           <Route
             path="/bookings"
             element={<ProtectedRoute roles={['SEEKER', 'PROVIDER', 'SPECIALIST']}><MyBookings /></ProtectedRoute>}
