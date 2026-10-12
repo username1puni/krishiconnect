@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import Navbar from './components/Navbar.jsx'
+import ProtectedRoute from './components/ProtectedRoute.jsx'
 import Home from './pages/Home.jsx'
 import Login from './pages/Login.jsx'
 import Register from './pages/Register.jsx'
@@ -8,6 +9,9 @@ import EquipmentList from './pages/EquipmentList.jsx'
 import EquipmentDetail from './pages/EquipmentDetail.jsx'
 import Specialists from './pages/Specialists.jsx'
 import SpecialistDetail from './pages/SpecialistDetail.jsx'
+import Requirements from './pages/Requirements.jsx'
+import RequirementNew from './pages/RequirementNew.jsx'
+import RequirementDetail from './pages/RequirementDetail.jsx'
 import Seasonal from './pages/Seasonal.jsx'
 import NotFound from './pages/NotFound.jsx'
 
@@ -25,7 +29,13 @@ export default function App() {
           <Route path="/equipment/:id" element={<EquipmentDetail />} />
           <Route path="/specialists" element={<Specialists />} />
           <Route path="/specialists/:id" element={<SpecialistDetail />} />
+          <Route path="/requirements" element={<Requirements />} />
+          <Route path="/requirements/:id" element={<RequirementDetail />} />
           <Route path="/seasonal" element={<Seasonal />} />
+          <Route
+            path="/requirements/new"
+            element={<ProtectedRoute roles={['SEEKER']}><RequirementNew /></ProtectedRoute>}
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
