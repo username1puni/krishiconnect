@@ -31,3 +31,5 @@ photographers. Licences are as listed on each file page.
 | `tractor-4.jpg` | [Sonalika Worldtrac 90.jpg](https://commons.wikimedia.org/wiki/File:Sonalika_Worldtrac_90.jpg) | Faridzaaroura | CC BY-SA 4.0 |
 | `water_pump-1.jpg` | [Agricultural irrigation pump set with borewell, Vrindavan, Uttar Pradesh, India.jpg](https://commons.wikimedia.org/wiki/File:Agricultural_irrigation_pump_set_with_borewell,_Vrindavan,_Uttar_Pradesh,_India.jpg) | Gannu03 | CC BY-SA 4.0 |
 | `water_pump-2.jpg` | [Diesel pump irrigation.jpg](https://commons.wikimedia.org/wiki/File:Diesel_pump_irrigation.jpg) | User:Longhair | CC BY 2.5 |
+
+`frontend/public/hero.jpg` on the home page is a copy of `tractor-1.jpg` (Timothy A. Gonsalves, CC BY-SA 4.0).
