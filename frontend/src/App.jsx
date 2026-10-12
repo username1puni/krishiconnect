@@ -12,6 +12,8 @@ import SpecialistDetail from './pages/SpecialistDetail.jsx'
 import Requirements from './pages/Requirements.jsx'
 import RequirementNew from './pages/RequirementNew.jsx'
 import RequirementDetail from './pages/RequirementDetail.jsx'
+import MyBookings from './pages/MyBookings.jsx'
+import ProviderRequests from './pages/ProviderRequests.jsx'
 import Seasonal from './pages/Seasonal.jsx'
 import NotFound from './pages/NotFound.jsx'
 
@@ -35,6 +37,14 @@ export default function App() {
           <Route
             path="/requirements/new"
             element={<ProtectedRoute roles={['SEEKER']}><RequirementNew /></ProtectedRoute>}
+          />
+          <Route
+            path="/bookings"
+            element={<ProtectedRoute roles={['SEEKER', 'PROVIDER', 'SPECIALIST']}><MyBookings /></ProtectedRoute>}
+          />
+          <Route
+            path="/provider/bookings"
+            element={<ProtectedRoute roles={['PROVIDER', 'SPECIALIST']}><ProviderRequests /></ProtectedRoute>}
           />
           <Route path="*" element={<NotFound />} />
         </Routes>
