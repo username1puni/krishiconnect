@@ -5,6 +5,8 @@ import Login from './pages/Login.jsx'
 import Register from './pages/Register.jsx'
 import EquipmentList from './pages/EquipmentList.jsx'
 import EquipmentDetail from './pages/EquipmentDetail.jsx'
+import Specialists from './pages/Specialists.jsx'
+import SpecialistDetail from './pages/SpecialistDetail.jsx'
 
 export default function App() {
   const { t } = useTranslation()
@@ -17,6 +19,8 @@ export default function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/equipment" element={<EquipmentList />} />
           <Route path="/equipment/:id" element={<EquipmentDetail />} />
+          <Route path="/specialists" element={<Specialists />} />
+          <Route path="/specialists/:id" element={<SpecialistDetail />} />
         </Routes>
       </main>
       <footer className="footer">
