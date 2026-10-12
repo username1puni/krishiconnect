@@ -13,6 +13,8 @@ import Requirements from './pages/Requirements.jsx'
 import RequirementNew from './pages/RequirementNew.jsx'
 import RequirementDetail from './pages/RequirementDetail.jsx'
 import MyBookings from './pages/MyBookings.jsx'
+import ProviderEquipment from './pages/ProviderEquipment.jsx'
+import EquipmentForm from './pages/EquipmentForm.jsx'
 import ProviderRequests from './pages/ProviderRequests.jsx'
 import Seasonal from './pages/Seasonal.jsx'
 import NotFound from './pages/NotFound.jsx'
@@ -41,6 +43,18 @@ export default function App() {
           <Route
             path="/bookings"
             element={<ProtectedRoute roles={['SEEKER', 'PROVIDER', 'SPECIALIST']}><MyBookings /></ProtectedRoute>}
+          />
+          <Route
+            path="/provider/equipment"
+            element={<ProtectedRoute roles={['PROVIDER']}><ProviderEquipment /></ProtectedRoute>}
+          />
+          <Route
+            path="/provider/equipment/new"
+            element={<ProtectedRoute roles={['PROVIDER']}><EquipmentForm /></ProtectedRoute>}
+          />
+          <Route
+            path="/provider/equipment/:id/edit"
+            element={<ProtectedRoute roles={['PROVIDER']}><EquipmentForm /></ProtectedRoute>}
           />
           <Route
             path="/provider/bookings"
