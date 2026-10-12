@@ -19,6 +19,7 @@ import EquipmentForm from './pages/EquipmentForm.jsx'
 import ProviderRequests from './pages/ProviderRequests.jsx'
 import Notifications from './pages/Notifications.jsx'
 import Seasonal from './pages/Seasonal.jsx'
+import Admin from './pages/admin/Admin.jsx'
 import NotFound from './pages/NotFound.jsx'
 
 export default function App() {
@@ -64,6 +65,7 @@ export default function App() {
             path="/provider/bookings"
             element={<ProtectedRoute roles={['PROVIDER', 'SPECIALIST']}><ProviderRequests /></ProtectedRoute>}
           />
+          <Route path="/admin" element={<ProtectedRoute roles={['ADMIN']}><Admin /></ProtectedRoute>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
